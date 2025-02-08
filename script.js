@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     const projects = [
-        { name: "Snake", url: "snake/index.html" },
+        { name: "Snake", url: "Snake/index.html" },
         // Add more projects here
     ];
 
