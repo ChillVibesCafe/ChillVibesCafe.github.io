@@ -8,11 +8,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     projects.forEach(project => {
         const li = document.createElement("li");
-        li.innerHTML = `
-            <a href="${project.url}" class="block bg-blue-500 text-white px-6 py-4 rounded-lg shadow-md hover:shadow-lg transition">
-                <i class="fas fa-gamepad mr-2"></i> ${project.name}
-            </a>
-        `;
+        const a = document.createElement("a");
+
+        a.href = project.url;
+        a.textContent = project.name;
+        a.classList.add(
+            "block", "bg-blue-500", "text-white", "px-6", "py-4", 
+            "rounded-lg", "shadow-md", "hover:shadow-lg", "transition",
+            "text-lg", "font-semibold", "text-center"
+        );
+
+        li.appendChild(a);
         projectList.appendChild(li);
     });
 });
