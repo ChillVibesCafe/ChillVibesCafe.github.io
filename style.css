@@ -4,6 +4,11 @@ body {
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
+/* Softer background */
+body {
+    background-color: #f7faff;
+}
+
 /* Centering and padding */
 .flex {
     display: flex;
@@ -11,7 +16,15 @@ body {
     justify-content: center;
 }
 
-/* Links and buttons */
+/* Card styling */
+.w-full {
+    background-color: #f3f4f6;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Project links */
 a {
     text-decoration: none;
     font-weight: 600;
@@ -22,10 +35,10 @@ a:hover {
     opacity: 0.9;
 }
 
-/* Project link styles */
+/* Project button styles */
 .project-link {
     display: block;
-    background-color: #3b82f6; /* Tailwind blue */
+    background-color: #3b82f6;
     color: white;
     padding: 12px 16px;
     border-radius: 8px;
@@ -34,8 +47,9 @@ a:hover {
     transition: all 0.3s ease-in-out;
 }
 
+/* Subtle hover animation */
 .project-link:hover {
-    background-color: #2563eb; /* Slightly darker blue */
+    background-color: #2563eb;
     transform: translateY(-2px);
-    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
 }
