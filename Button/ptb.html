@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prank Button</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: green;
+    color: white;
+    padding: 15px 30px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+  .disclaimer {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: #888;
+  }
+
+  .video-container {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure video is on top of other content */
+  }
+
+  .video-container video {
+    width: 100%;
+    height: 100%;
+  }
+
+  .comments-plugin {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    z-index: 2; /* Ensure comments plugin is on top of video */
+  }
+
+  .warning-message {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: red;
+    text-align: center;
+    z-index: 3; /* Ensure warning message is on top of everything */
+  }
+</style>
+</head>
+<body>
+<div class="video-container" id="videoContainer">
+  <video id="rickrollVideo" controls>
+    <source src="rr.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="warning-message" id="warningMessage">
+  <p>This webpage does not work on mobile devices!</p>
+</div>
+
+<button class="button" id="prankButton">Click me!</button>
+<div class="disclaimer">Note: This only works on non-mobile devices.</div>
+
+<audio id="warningSound" src="https://www.myinstants.com/media/sounds/airhorn.mp3" preload="auto"></audio>
+
+<script>
+  const button = document.getElementById('prankButton');
+  const videoContainer = document.getElementById('videoContainer');
+  const rickrollVideo = document.getElementById('rickrollVideo');
+  const commentsPlugin = document.getElementById('commentsPlugin');
+  const warningMessage = document.getElementById('warningMessage');
+  const warningSound = document.getElementById('warningSound');
+
+  // Check if the device is a mobile device
+  function isMobileDevice() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+  }
+
+  // Function to get a random position on the screen
+  function getRandomPosition() {
+    const x = Math.floor(Math.random() * (window.innerWidth - button.offsetWidth));
+    const y = Math.floor(Math.random() * (window.innerHeight - button.offsetHeight));
+    return [x, y];
+  }
+
+  // Function to move the button to a random position
+  function moveButton() {
+    const [x, y] = getRandomPosition();
+    button.style.left = `${x}px`;
+    button.style.top = `${y}px`;
+    changeBackgroundColor();
+  }
+
+  // Function to show the video and comments plugin
+  function showContent() {
+    videoContainer.style.display = 'flex';
+    commentsPlugin.style.display = 'block';
+    rickrollVideo.play();
+  }
+
+  // Function to show the warning message and play the sound.
+  function showWarning() {
+    warningMessage.style.display = 'block';
+    warningSound.play();
+  }
+
+  // Function to change the background color randomly
+  function changeBackgroundColor() {
+    document.body.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+  }
+
+  // Add event listeners based on the device type
+  if (isMobileDevice()) {
+    button.addEventListener('click', showWarning);
+  } else {
+    button.addEventListener('mouseenter', moveButton);
+    button.addEventListener('click', showContent);
+  }
+
+  // Cheat activation function
+  function activateCheat(event) {
+    if (event.ctrlKey && event.shiftKey && event.key === '"') {
+      showContent();
+    }
+  }
+
+  // Add event listener for the cheat activation
+  document.addEventListener('keydown', activateCheat);
+</script>
+</body>
+</html>
+ 

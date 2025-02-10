@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Snake", url: "Snake/index.html" },
         { name: "Breakout", url: "Breakout/index.html" },
         { name: "Pokemon Trivia", url: "Pokemon Trivia/index.html" },
+        { name: "Push The Button", url: "Button/ptb.html" },
         // Add more projects here
     ];
 
