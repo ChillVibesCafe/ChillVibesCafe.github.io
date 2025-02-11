@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "Breakout", url: "Breakout/index.html" },
         { name: "Pokemon Trivia", url: "Pokemon Trivia/index.html" },
         { name: "Push The Button", url: "Button/ptb.html" },
+        { name: "Plinko", url: "PlinkoIdle/index.html" },
         // Add more projects here
     ];
 
