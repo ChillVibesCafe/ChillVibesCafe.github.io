@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plinko Idle Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <canvas id="gameCanvas"></canvas>
+    <div id="ui">
+      <h2>Plinko Idle</h2>
+      <p>Score: <span id="score">0</span></p>
+      <div class="upgrade">
+        <button id="upgradeSpawn">Upgrade Spawn Rate (Cost: 50)</button>
+      </div>
+      <div class="upgrade">
+        <button id="upgradeScore">Upgrade Score Multiplier (Cost: 100)</button>
+      </div>
+      <div class="upgrade">
+        <button id="upgradeMaxBalls">Upgrade Max Idle Balls (Cost: 150)</button>
+      </div>
+      <p style="margin-top:20px; font-size: 14px;">
+        Click in the top half of the game area to add interactive balls (worth 0.1x points)
+      </p>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

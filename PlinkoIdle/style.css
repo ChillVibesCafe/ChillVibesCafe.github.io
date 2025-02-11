@@ -1,0 +1,48 @@
+/* Basic reset and bright, fun styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling */
+  background: #f0f8ff;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#game-container {
+  display: flex;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* The canvas will be dynamically sized via JS */
+canvas {
+  border: 2px solid #333;
+  background: #fff;
+}
+
+#ui {
+  background: #ffebcd;
+  padding: 20px;
+  width: 220px;
+}
+
+#ui h2 {
+  text-align: center;
+}
+
+.upgrade button {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #ff69b4;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.upgrade button:hover {
+  background: #ff1493;
+}

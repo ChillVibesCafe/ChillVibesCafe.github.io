@@ -1,15 +1,37 @@
+/* Make body fill the screen and center contents */
 body {
-    background-color: #eee;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  canvas {
-    background: #000;
-    border: 1px solid #ccc;
-    display: block;
-  }
-  
+  margin: 0;
+  background-color: #222;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Canvas fills most of the viewport (its size is controlled in JS) */
+canvas {
+  display: block;
+  margin: 0 auto;
+  background-color: #000;
+}
+
+/* Overlay screens (start and game over) */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+button {
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+}

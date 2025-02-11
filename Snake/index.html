@@ -7,7 +7,17 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="startScreen" class="overlay">
+    <h1>Snake Game</h1>
+    <button id="startButton">Start Game</button>
+  </div>
   <canvas id="game"></canvas>
+  <div id="gameOverScreen" class="overlay" style="display: none;">
+    <h1>Game Over</h1>
+    <p id="scoreDisplay"></p>
+    <p id="highScoreDisplay"></p>
+    <button id="restartButton">Restart</button>
+  </div>
   <script src="script.js"></script>
 </body>
 </html>

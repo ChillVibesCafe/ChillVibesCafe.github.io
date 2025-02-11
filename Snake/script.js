@@ -2,7 +2,7 @@ const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
 const blockSize = 20;
-let canvasSize; // will be set dynamically based on available vertical space
+let canvasSize;
 
 // Resize the canvas so that the entire play area is visible vertically.
 // The canvas will be a square whose side is the largest multiple of blockSize
@@ -18,31 +18,45 @@ function resizeCanvas() {
 
 resizeCanvas();
 
-// Optionally, reload the game when the window is resized.
+// Reload the page when the window is resized so the grid remains aligned.
 window.addEventListener("resize", () => {
   location.reload();
 });
 
-// Calculate the middle cell for starting positions so they align to the grid.
+// Calculate the middle cell so starting positions align to the grid.
 const columns = canvasSize / blockSize;
 const middleCell = Math.floor(columns / 2) * blockSize;
 
-// Initialize snake with positions aligned to the grid.
-let snake = [
-  { x: middleCell, y: middleCell },
-  { x: middleCell - blockSize, y: middleCell },
-  { x: middleCell - 2 * blockSize, y: middleCell }
-];
-
-// Starting velocity: moving to the right.
-let dx = blockSize;
-let dy = 0;
-
-// Food coordinates.
+// Game state variables.
+let initialSnakeLength = 3;
+let snake;
+let dx;
+let dy;
 let foodX;
 let foodY;
+let gameRunning = false;
+let score = 0;
 
-createFood();
+// Get overlay elements.
+const startScreen = document.getElementById("startScreen");
+const startButton = document.getElementById("startButton");
+const gameOverScreen = document.getElementById("gameOverScreen");
+const restartButton = document.getElementById("restartButton");
+const scoreDisplay = document.getElementById("scoreDisplay");
+const highScoreDisplay = document.getElementById("highScoreDisplay");
+
+// Initialize game variables.
+function initGame() {
+  snake = [
+    { x: middleCell, y: middleCell },
+    { x: middleCell - blockSize, y: middleCell },
+    { x: middleCell - 2 * blockSize, y: middleCell }
+  ];
+  dx = blockSize;
+  dy = 0;
+  createFood();
+  score = 0;
+}
 
 // Create a single AudioContext for playing sounds.
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
@@ -54,7 +68,7 @@ document.addEventListener("keydown", function() {
   }
 });
 
-// Function to play a tone using an oscillator.
+// Function to play a tone using the Web Audio API.
 function playSound(frequency, duration) {
   const oscillator = audioCtx.createOscillator();
   const gainNode = audioCtx.createGain();
@@ -63,15 +77,13 @@ function playSound(frequency, duration) {
   oscillator.frequency.value = frequency;
   oscillator.type = "sine";
   oscillator.start();
-  // Set initial gain and fade out quickly.
   gainNode.gain.setValueAtTime(1, audioCtx.currentTime);
   gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
   oscillator.stop(audioCtx.currentTime + duration);
 }
 
-// Generate a random position for the food based on the current canvas size.
+// Generate a random position for the food that aligns to the grid.
 function createFood() {
-  // Both foodX and foodY are aligned to multiples of blockSize.
   foodX = Math.floor(Math.random() * (canvasSize / blockSize)) * blockSize;
   foodY = Math.floor(Math.random() * (canvasSize / blockSize)) * blockSize;
 }
@@ -82,18 +94,17 @@ function clearCanvas() {
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
-// Draw the food as a red square.
+// Draw the food.
 function drawFood() {
   ctx.fillStyle = "red";
   ctx.fillRect(foodX, foodY, blockSize, blockSize);
 }
 
-// Draw the entire snake.
+// Draw the snake.
 function drawSnake() {
   snake.forEach(drawSnakePart);
 }
 
-// Draw an individual segment of the snake.
 function drawSnakePart(snakePart) {
   ctx.fillStyle = "lightgreen";
   ctx.strokeStyle = "darkgreen";
@@ -101,15 +112,15 @@ function drawSnakePart(snakePart) {
   ctx.strokeRect(snakePart.x, snakePart.y, blockSize, blockSize);
 }
 
-// Move the snake by adding a new head based on the current direction.
-// If the snake has eaten the food, play a sound and do not remove the tail; otherwise, remove the last segment.
+// Move the snake and check if food is eaten.
 function moveSnake() {
   const head = { x: snake[0].x + dx, y: snake[0].y + dy };
   snake.unshift(head);
 
-  // Check if the snake has eaten the food.
+  // If food is eaten:
   if (head.x === foodX && head.y === foodY) {
-    playSound(200, 0.1); // play a quick beep when food is eaten
+    playSound(200, 0.1); // quick beep
+    score++;
     createFood();
   } else {
     snake.pop();
@@ -117,15 +128,11 @@ function moveSnake() {
 }
 
 // Check for collisions with walls or self.
-function gameOver() {
+function checkCollision() {
   const head = snake[0];
-
-  // Collision with walls.
   if (head.x < 0 || head.x >= canvasSize || head.y < 0 || head.y >= canvasSize) {
     return true;
   }
-
-  // Collision with itself.
   for (let i = 1; i < snake.length; i++) {
     if (head.x === snake[i].x && head.y === snake[i].y) {
       return true;
@@ -134,14 +141,11 @@ function gameOver() {
   return false;
 }
 
-// Main game loop.
+// The main game loop.
 function gameLoop() {
-  if (gameOver()) {
-    playSound(110, 0.3); // play a lower tone when the game is over
-    setTimeout(function() {
-      alert("Game Over!");
-      document.location.reload();
-    }, 100);
+  if (!gameRunning) return;
+  if (checkCollision()) {
+    gameOverHandler();
     return;
   }
   setTimeout(function onTick() {
@@ -153,15 +157,24 @@ function gameLoop() {
   }, 100);
 }
 
-// Change the direction based on the arrow key pressed,
-// preventing the snake from reversing direction.
+// Change direction based on key press (prevent snake from reversing).
+// Supports both arrow keys and WASD controls.
 function changeDirection(event) {
+  let keyPressed = event.keyCode;
+  // Map WASD keys to arrow key codes
+  if (event.key) {
+    const key = event.key.toLowerCase();
+    if (key === "w") keyPressed = 38;
+    if (key === "a") keyPressed = 37;
+    if (key === "s") keyPressed = 40;
+    if (key === "d") keyPressed = 39;
+  }
+
   const LEFT_KEY = 37;
   const UP_KEY = 38;
   const RIGHT_KEY = 39;
   const DOWN_KEY = 40;
 
-  const keyPressed = event.keyCode;
   const goingUp = dy === -blockSize;
   const goingDown = dy === blockSize;
   const goingRight = dx === blockSize;
@@ -187,5 +200,31 @@ function changeDirection(event) {
 
 window.addEventListener("keydown", changeDirection);
 
-// Start the game.
-gameLoop();
+// Handle game over: stop the game, update high score, and show the game over overlay.
+function gameOverHandler() {
+  playSound(110, 0.3);
+  gameRunning = false;
+  // Retrieve and update the high score from local storage.
+  let highScore = localStorage.getItem("highScore") || 0;
+  if (score > highScore) {
+    highScore = score;
+    localStorage.setItem("highScore", highScore);
+  }
+  // Display current score and high score.
+  scoreDisplay.textContent = "Score: " + score;
+  highScoreDisplay.textContent = "High Score: " + highScore;
+  gameOverScreen.style.display = "flex";
+}
+
+// Start (or restart) the game.
+function startGame() {
+  startScreen.style.display = "none";
+  gameOverScreen.style.display = "none";
+  initGame();
+  gameRunning = true;
+  gameLoop();
+}
+
+// Event listeners for the start and restart buttons.
+startButton.addEventListener("click", startGame);
+restartButton.addEventListener("click", startGame);
