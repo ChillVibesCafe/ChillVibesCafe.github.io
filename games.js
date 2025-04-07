@@ -1,8 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
     const projects = [
-        { name: "SuperPIP", url: "https://github.com/ChillVibesCafe/SuperPIP" },
-        { name: "Catbox File Uploader", url: "https://github.com/ChillVibesCafe/Catbox-File-Uploader" },
-        { name: "Games", url: "games.html" },
+        { name: "Snake", url: "Snake/index.html" },
+        { name: "Breakout", url: "Breakout/index.html" },
+        { name: "Pokemon Trivia", url: "Pokemon Trivia/index.html" },
+        { name: "Push The Button", url: "Button/ptb.html" },
+        { name: "Plinko", url: "PlinkoIdle/index.html" },
         // Add more projects here
     ];
 
