@@ -1,35 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adam's GitHub Games</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome (for icons) -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chill's GitHub Games</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .bg-gradient {
+      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+  </style>
 </head>
-<body class="bg-blue-50 text-gray-800 transition-all duration-300">
+<body class="bg-gradient min-h-screen text-gray-800 flex items-center justify-center px-4 py-10">
 
-    <div class="flex flex-col items-center justify-center min-h-screen px-6">
-        <div class="w-full max-w-2xl bg-gray-100 shadow-lg rounded-lg p-8 text-center border border-gray-200">
-            <h1 class="text-3xl font-bold text-gray-900">Games</h1>
-            <p class="text-gray-700 mt-2">Here are some silly simple games:</p>
-
-            <!-- Project List -->
-            <ul id="project-list" class="mt-6 space-y-4">
-                <!-- JavaScript will populate this -->
-            </ul>
-        </div>
+  <div class="w-full max-w-4xl glass rounded-3xl shadow-xl p-10">
+    
+    <!-- Header -->
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-bold text-gray-900">🎮 Games</h1>
+      <p class="text-gray-700 mt-2 text-lg">Some silly little games I built for fun.</p>
     </div>
 
-    <script src="games.js"></script>
+    <!-- Game Cards -->
+    <div id="project-list" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
+      <!-- JavaScript will populate this -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="mt-12 text-center text-sm text-gray-500">
+      © 2025 ChillVibesCafe. Made with ☕ and <span class="text-blue-500">Tailwind CSS</span>.
+    </footer>
+  </div>
+
+  <script src="games.js"></script>
 </body>
 </html>
