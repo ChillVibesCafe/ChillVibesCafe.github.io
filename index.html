@@ -1,60 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chill's GitHub Portfolio</title>
-
-  <!-- Tailwind CSS -->
+  <title>ChillVibesCafe</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .bg-gradient {
-      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gradient min-h-screen text-gray-800 flex items-center justify-center px-4 py-10">
 
-  <div class="w-full max-w-4xl glass rounded-3xl shadow-xl p-10">
-    
-    <!-- Hero -->
-    <div class="text-center mb-10">
-      <img src="chillvibescafe2.png" alt="avatar" class="w-24 h-24 mx-auto rounded-full border-4 border-white shadow-md mb-4" />
-      <h1 class="text-4xl font-bold text-gray-900">Hi, I'm Chill ✨</h1>
-      <p class="text-gray-700 mt-2 text-lg">A casual dev creating tools, utilities, and fun stuff with code.</p>
+<body class="bg-gradient-to-br from-blue-100 to-blue-300 text-gray-800 min-h-screen flex flex-col">
+  <!-- Navbar -->
+  <header class="bg-white/70 backdrop-blur sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">ChillVibesCafe</h1>
+      <nav class="space-x-6">
+        <main class="flex-grow">
+        <a href="index.html" class="text-blue-600 font-semibold">Home</a>
+        <a href="projects.html" class="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+        <a href="games.html" class="text-gray-700 hover:text-blue-600 font-medium">Games</a>
+        </main>
+      </nav>
     </div>
+  </header>
 
-    <!-- Project Section -->
-    <div>
-      <h2 class="text-2xl font-semibold text-gray-800 mb-6 border-b pb-2">Featured Projects</h2>
-      <div id="project-list" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
-        <!-- Populated by JS -->
-      </div>
+  <!-- Hero Section -->
+  <section class="flex flex-col items-center justify-center text-center py-20 px-6">
+    <h2 class="text-5xl font-bold text-gray-900 mb-4">Welcome!</h2>
+    <p class="text-lg max-w-2xl text-gray-700 mb-8">My cozy little corner on the web for code, games, and projects. Relax, click around, and see what’s brewing.</p>
+    <div class="space-x-4">
+      <a href="projects.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition">View Projects</a>
+      <a href="games.html" class="bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-xl font-medium transition">Play Games</a>
     </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="mt-12 text-center text-sm text-gray-500">
-      © 2025 ChillVibesCafe. Made with ☕ and <span class="text-blue-500">Tailwind CSS</span>.
-    </footer>
-  </div>
-
-  <!-- JS populates project cards -->
-  <script src="script.js"></script>
+  <!-- Footer -->
+  <footer class="bg-white/70 backdrop-blur text-center text-sm text-gray-600 py-6 mt-auto">
+    <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
+  </footer>
 </body>
 </html>

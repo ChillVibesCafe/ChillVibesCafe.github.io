@@ -1,55 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chill's GitHub Games</title>
-
-  <!-- Tailwind CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games - ChillVibesCafe</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-    }
-    .bg-gradient {
-      background: linear-gradient(135deg, #c2e9fb 0%, #a1c4fd 100%);
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-gradient min-h-screen text-gray-800 flex items-center justify-center px-4 py-10">
-
-  <div class="w-full max-w-4xl glass rounded-3xl shadow-xl p-10">
-    
-    <!-- Header -->
-    <div class="text-center mb-10">
-      <h1 class="text-4xl font-bold text-gray-900">🎮 Games</h1>
-      <p class="text-gray-700 mt-2 text-lg">Some silly little games I built for fun.</p>
+<body class="bg-gradient-to-br from-blue-100 to-blue-300 text-gray-800 min-h-screen flex flex-col">
+  <header class="bg-white/70 backdrop-blur sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">ChillVibesCafe</h1>
+      <nav class="space-x-6">
+        <main class="flex-grow">
+        <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+        <a href="projects.html" class="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+        <a href="games.html" class="text-blue-600 font-semibold">Games</a>
+        </main>
+      </nav>
     </div>
+  </header>
 
-    <!-- Game Cards -->
-    <div id="project-list" class="grid gap-6 sm:grid-cols-1 md:grid-cols-2">
-      <!-- JavaScript will populate this -->
+  <main class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-bold text-center mb-12">Games Gallery</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <a href="Breakout/index.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
+        <h3 class="text-xl font-semibold">Breakout</h3>
+        <p class="text-sm text-gray-600 mt-2">Classic block-breaking fun.</p>
+      </a>
+      <a href="PlinkoIdle/index.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
+        <h3 class="text-xl font-semibold">Plinko Idle</h3>
+        <p class="text-sm text-gray-600 mt-2">This one Kinda Sucks.</p>
+      </a>
+      <a href="Snake/index.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
+        <h3 class="text-xl font-semibold">Snake</h3>
+        <p class="text-sm text-gray-600 mt-2">Slither your way to victory.</p>
+      </a>
+      <a href="Button/ptb.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
+        <h3 class="text-xl font-semibold">Push the Button</h3>
+        <p class="text-sm text-gray-600 mt-2">A mysterious red button...</p>
+      </a>
     </div>
+  </main>
 
-    <!-- Footer -->
-    <footer class="mt-12 text-center text-sm text-gray-500">
-      © 2025 ChillVibesCafe. Made with ☕ and <span class="text-blue-500">Tailwind CSS</span>.
-    </footer>
-  </div>
-
-  <script src="games.js"></script>
+  <footer class="bg-white/70 backdrop-blur text-center text-sm text-gray-600 py-6 mt-auto">
+    <p>&copy; 2025 ChillVibesCafe. Keep chillin'.</p>
+  </footer>
 </body>
 </html>
