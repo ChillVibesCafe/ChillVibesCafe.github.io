@@ -6,22 +6,39 @@
   <title>Games - ChillVibesCafe</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('lofiscene.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-blue-300 text-gray-800 min-h-screen flex flex-col">
-  <header class="bg-white/70 backdrop-blur sticky top-0 z-50 shadow-md">
+<body class="relative bg-gradient-to-br from-blue-100 to-blue-300 text-gray-800 min-h-screen flex flex-col">
+
+  <!-- Navbar -->
+  <header class="bg-white/70 backdrop-blur sticky top-0 z-10 shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
       <h1 class="text-xl font-bold">ChillVibesCafe</h1>
       <nav class="space-x-6">
-        <main class="flex-grow">
         <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Home</a>
         <a href="projects.html" class="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
         <a href="games.html" class="text-blue-600 font-semibold">Games</a>
-        </main>
       </nav>
     </div>
   </header>
 
-  <main class="max-w-6xl mx-auto px-4 py-16">
+  <!-- Main Content -->
+  <main class="flex-grow relative z-10 max-w-6xl mx-auto px-4 py-16">
     <h2 class="text-3xl font-bold text-center mb-12">Games Gallery</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
       <a href="Breakout/index.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
@@ -30,7 +47,7 @@
       </a>
       <a href="PlinkoIdle/index.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
         <h3 class="text-xl font-semibold">Plinko Idle</h3>
-        <p class="text-sm text-gray-600 mt-2">This one Kinda Sucks.</p>
+        <p class="text-sm text-gray-600 mt-2">This one kinda sucks.</p>
       </a>
       <a href="Snake/index.html" class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition block text-center">
         <h3 class="text-xl font-semibold">Snake</h3>
@@ -43,7 +60,8 @@
     </div>
   </main>
 
-  <footer class="bg-white/70 backdrop-blur text-center text-sm text-gray-600 py-6 mt-auto">
+  <!-- Footer -->
+  <footer class="bg-white/70 backdrop-blur text-center text-sm text-gray-600 py-6 mt-auto relative z-10">
     <p>&copy; 2025 ChillVibesCafe. Keep chillin'.</p>
   </footer>
 </body>
