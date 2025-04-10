@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChillVibesCafe - Blog</title>
+
+  <!-- Import Google Fonts for a stylish look -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400" rel="stylesheet">
+
+  <style>
+    /* Global styles */
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+
+    /* Header styling */
+    header {
+      background: #fff;
+      border-bottom: 5px solid #666;
+      padding: 20px 0;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Roboto Slab', serif;
+      font-size: 3em;
+      margin: 0;
+    }
+
+    /* Navigation bar */
+    nav {
+      background: #333;
+      color: #fff;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* Blog posts grid */
+    .posts {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-gap: 20px;
+      margin: 30px auto;
+      max-width: 1100px;
+    }
+
+    .post {
+      background: #fff;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .post:hover {
+      transform: translateY(-5px);
+    }
+
+    .post img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .post-content {
+      padding: 15px;
+    }
+
+    .post-content h3 {
+      font-family: 'Roboto Slab', serif;
+      margin-top: 0;
+    }
+
+    .post-content p {
+      margin-bottom: 10px;
+    }
+
+    .read-more {
+      display: inline-block;
+      margin-top: 10px;
+      background: #333;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 3px;
+      font-size: 0.9em;
+      cursor: pointer;
+    }
+
+    /* Footer styling */
+    footer {
+      background: #666;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9em;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+    }
+
+    /* Main flex fix */
+    main {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="container">
+    <h1>ChillVibesCafe</h1>
+  </header>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../games.html">Games</a></li>
+        <li><a href="../projects.html">Projects</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Blog Section - Hero Images are 500x300 -->
+  <main>
+    <section class="container posts">
+      <!-- Post 1 -->
+      <article class="post">
+        <img src="Post 1/blog.png" alt="Post Image">
+        <div class="post-content">
+          <h3>I made a Blog!</h3>
+          <p>My very own blog, not constrained by tumblr, blogger, wordpress etc...</p>
+          <span class="read-more" onclick="openPost('Post 1/post.html')">Read More</span>
+        </div>
+      </article>
+
+      <!-- Post test -->
+      <article class="post">
+        <img src="Post 1/blog.png" alt="Post Image">
+        <div class="post-content">
+          <h3>I made a Blog!</h3>
+          <p>This one is here to test card spacing, dont mind me ☺</p>
+          <span class="read-more" onclick="openPost('Post 1/post.html')">Read More</span>
+        </div>
+      </article>
+
+      <!-- Post test -->
+      <article class="post">
+        <img src="Post 1/blog.png" alt="Post Image">
+        <div class="post-content">
+          <h3>I made a Blog!</h3>
+          <p>This one is here to test card spacing, dont mind me ☺</p>
+          <span class="read-more" onclick="openPost('Post 1/post.html')">Read More</span>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Modal for blog post content -->
+  <div id="modalOverlay" style="display: none;" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+    <div class="bg-white max-w-2xl w-full p-6 rounded shadow-lg relative">
+      <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold">&times;</button>
+      <div id="modalContent" class="overflow-y-auto max-h-[80vh]">
+        <!-- Blog post content gets injected here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
+  </footer>
+
+  <!-- External JavaScript -->
+  <script src="blog.js"></script>
+</body>
+</html>
