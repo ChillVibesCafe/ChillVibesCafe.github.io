@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400" rel="stylesheet">
 
   <style>
-    /* Global styles */
     html, body {
       height: 100%;
     }
@@ -36,7 +35,12 @@
       padding: 0 15px;
     }
 
-    /* Header styling */
+    .container-wrapper {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
     header {
       background: #fff;
       border-bottom: 5px solid #666;
@@ -50,7 +54,6 @@
       margin: 0;
     }
 
-    /* Navigation bar */
     nav {
       background: #333;
       color: #fff;
@@ -74,7 +77,6 @@
       font-weight: bold;
     }
 
-    /* Blog posts grid */
     .posts {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -125,7 +127,6 @@
       cursor: pointer;
     }
 
-    /* Footer styling */
     footer {
       background: #666;
       color: #fff;
@@ -134,93 +135,92 @@
       font-size: 0.9em;
     }
 
-    /* Responsive tweaks */
     @media (max-width: 768px) {
-  nav ul {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
+      nav ul {
+        justify-content: center;
+        flex-wrap: wrap;
+      }
 
-  nav ul li {
-    margin: 6px 10px;
-  }
-}
+      nav ul li {
+        margin: 6px 10px;
+      }
+    }
 
-    /* Main flex fix */
+    .footer-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .github-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      position:absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
     main {
       flex: 1;
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header class="container">
-    <h1>ChillVibesCafe</h1>
-  </header>
+  <div class="container-wrapper">
+    <header class="container">
+      <h1>ChillVibesCafe</h1>
+    </header>
 
-  <!-- Navigation -->
-  <nav>
-    <div class="container">
-      <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../games.html">Games</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- Main Blog Section - Hero Images are 500x300 -->
-<!-- ...same head content as before... -->
-<main>
-    <section class="container posts">
-      <!-- Post 1 -->
-      <article class="post">
-        <img src="post-1/blog.png" alt="Post Image">
-        <div class="post-content">
-          <h3>I made a Blog!</h3>
-          <p>My very own blog, not constrained by tumblr, blogger, wordpress etc...</p>
-          <a class="read-more" href="post-1/post.html">Read More</a>
-        </div>
-      </article>
-  
-      <!-- Post test -->
-      <article class="post">
-        <img src="post-1/blog.png" alt="Post Image">
-        <div class="post-content">
-          <h3>I made a Blog!</h3>
-          <p>This one is here to test card spacing, dont mind me ☺</p>
-          <a class="read-more" href="post-1/post.html">Read More</a>
-        </div>
-      </article>
-  
-      <!-- Post test -->
-      <article class="post">
-        <img src="post-1/blog.png" alt="Post Image">
-        <div class="post-content">
-          <h3>I made a Blog!</h3>
-          <p>This one is here to test card spacing, dont mind me ☺</p>
-          <a class="read-more" href="post-1/post.html">Read More</a>
-        </div>
-      </article>
-    </section>
-  </main>  
-
-  <!-- Modal for blog post content -->
-  <div id="modalOverlay" style="display: none;" class="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-    <div class="bg-white max-w-2xl w-full p-6 rounded shadow-lg relative">
-      <button onclick="closeModal()" class="absolute top-2 right-3 text-gray-500 hover:text-black text-lg font-bold">&times;</button>
-      <div id="modalContent" class="overflow-y-auto max-h-[80vh]">
-        <!-- Blog post content gets injected here -->
+    <nav>
+      <div class="container">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../games.html">Games</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+        </ul>
       </div>
-    </div>
+    </nav>
+
+    <main>
+      <section class="container posts">
+        <!-- Post 1 -->
+        <article class="post">
+          <img src="post-1/blog.png" alt="Post Image">
+          <div class="post-content">
+            <h3>I made a Blog!</h3>
+            <p>My very own blog, not constrained by tumblr, blogger, wordpress etc...</p>
+            <a class="read-more" href="post-1/post.html">Read More</a>
+          </div>
+        </article>
+        <!-- Post 2 -->
+        <article class="post">
+          <img src="post-2/creativity.png" alt="Post Image">
+          <div class="post-content">
+            <h3>Creativity On the Clock</h3>
+            <p>I always seem to come up with my ideas at work.</p>
+            <a class="read-more" href="post-2/post.html">Read More</a>
+          </div>
+        </article>
+        <!-- Post 3 -->
+      </section>
+    </main>
   </div>
 
-  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
+    <div class="footer-container">
+      <a href="https://github.com/ChillVibesCafe" target="_blank" aria-label="GitHub">
+        <img src="../github.png" alt="GitHub" class="github-icon">
+      </a>
+      <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- External JavaScript -->
   <script src="blog.js"></script>
 </body>
 </html>

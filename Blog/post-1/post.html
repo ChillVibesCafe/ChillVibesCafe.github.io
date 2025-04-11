@@ -114,14 +114,34 @@
     }
 
     @media (max-width: 768px) {
-      nav ul {
-        flex-direction: column;
-      }
+  nav ul {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 
       article {
         padding: 20px;
       }
     }
+    .footer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.github-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  position:absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
   </style>
 </head>
 <body>
@@ -132,10 +152,9 @@
   <nav>
     <div class="container">
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="../games.html">Games</a></li>
-        <li><a href="../projects.html">Projects</a></li>
-        <li><a href="../Blog/Blog.html">Blog</a></li>
+        <li><a href="../../index.html">Home</a></li>
+        <li><a href="../../games.html">Games</a></li>
+        <li><a href="../../projects.html">Projects</a></li>
       </ul>
     </div>
   </nav>
@@ -178,7 +197,12 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
-  </footer>
+    <div class="footer-container">
+      <a href="https://github.com/ChillVibesCafe" target="_blank" aria-label="GitHub">
+        <img src="../../github.png" alt="GitHub" class="github-icon">
+      </a>
+      <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
+    </div>
+  </footer>  
 </body>
 </html>
