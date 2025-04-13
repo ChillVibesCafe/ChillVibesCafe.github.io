@@ -1,9 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Post Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #333;
+      color: white;
+      cursor: pointer;
+    }
+    pre {
+      background-color: #eee;
+      padding: 10px;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+  <h1>Blog Post Generator</h1>
+
+  <input type="text" id="title" placeholder="Post Title">
+  <input type="text" id="filename" placeholder="Filename (no extension)">
+  <input type="text" id="image" placeholder="Image filename (e.g. blog.png)">
+  <textarea id="content" rows="10" placeholder="Write your blog content here, use paragraph breaks between blocks..."></textarea>
+
+  <button onclick="generatePost()">Generate Blog Post HTML</button>
+
+  <h2>Generated HTML:</h2>
+  <pre id="output"></pre>
+
+  <script>
+    function generatePost() {
+      const title = document.getElementById('title').value;
+      const filename = document.getElementById('filename').value;
+      const image = document.getElementById('image').value;
+      const contentRaw = document.getElementById('content').value;
+      const output = document.getElementById('output');
+
+      const today = new Date();
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      const formattedDate = today.toLocaleDateString('en-US', options);
+
+      const paragraphs = contentRaw
+        .split(/\n{2,}/)
+        .map(p => `<p>${p.trim()}</p>`) 
+        .join("\n        ");
+
+      const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creativity on the Clock - ChillVibesCafe</title>
+  <title>${title} - ChillVibesCafe</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:300,400" rel="stylesheet">
   <style>
     html, body { height: 100%; }
@@ -80,7 +142,7 @@
 </head>
 <body>
   <header class="container">
-    <a href="../../index.html" class="text-black-500"><h1 class="text-xl font-bold">ChillVibesCafe</h1></a>
+      <a href="../../index.html" class="text-black-500"><h1 class="text-xl font-bold">ChillVibesCafe</h1></a>
   </header>
   <nav>
     <div class="container">
@@ -88,19 +150,17 @@
         <li><a href="../../index.html">Home</a></li>
         <li><a href="../../games.html">Games</a></li>
         <li><a href="../../projects.html">Projects</a></li>
-        <li><a href="../../suno/index.html">Music</a></li>
+		<li><a href="../../suno/index.html">Music</a></li>
       </ul>
     </div>
   </nav>
   <main>
     <section class="container">
       <article>
-        <h2>Creativity on the Clock</h2>
-        <p class="date">Posted on April 11, 2025</p>
-        <img src="creativity.png" alt="Blog Cover">
-        <p>I tend to be more actively creative when I'm trudging through the day at work It's like having to be here slaving away on the machines makes my brain want to wander.</p>
-        <p>It's a good thing my bosses are cool with my being on my personal computer as I work, as long as my productivity is still high like normal.</p>
-        <p>I tend to be all over the place with the next thing i want to learn, or the next project I want to try, but this blog site and other html coding through github pages has been a lot of fun and i plan on doing much more with it, just not sure what yet.</p>
+        <h2>${title}</h2>
+        <p class="date">Posted on ${formattedDate}</p>
+        <img src="${image}" alt="Blog Cover">
+        ${paragraphs}
         <div style="margin-top: 2em;">
           <a href="../Blog.html" style="display: inline-block; padding: 10px 16px; background: #333; color: #fff; font-weight: bold; text-decoration: none; border-radius: 4px;">&larr; Back</a>
         </div>
@@ -115,5 +175,11 @@
       <p>&copy; 2025 ChillVibesCafe. All rights reserved.</p>
     </div>
   </footer>
+</body>
+</html>`;
+
+      output.textContent = html;
+    }
+  </script>
 </body>
 </html>
