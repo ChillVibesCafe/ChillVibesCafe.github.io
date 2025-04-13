@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChillVibesCafe - AI Music Gallery</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../lofiscene.png');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+      z-index: 0;
+      pointer-events: none;
+    }
+    @keyframes pulse {
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+      50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.4; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
+    }
+    .pulse {
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes fadeIn {
+      from { transform: translateY(100%); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .fade-in {
+      animation: fadeIn 0.3s ease forwards;
+    }
+  </style>
+</head>
+<body class="relative bg-gradient-to-br from-blue-100 to-blue-300 text-gray-800 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-white/70 backdrop-blur sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <h1 class="text-xl font-bold">ChillVibesCafe</h1>
+      <nav class="space-x-6">
+        <a href="../index.html" class="text-blue-600 font-semibold">Home</a>
+        <a href="../projects.html" class="text-gray-700 hover:text-blue-600 font-medium">Projects</a>
+        <a href="../games.html" class="text-gray-700 hover:text-blue-600 font-medium">Games</a>
+        <a href="../Blog/Blog.html" class="text-gray-700 hover:text-blue-600 font-medium">Blog</a>
+        <a href="index.html" class="text-gray-700 hover:text-blue-600 font-medium">Music</a>
+      </nav>
+    </div>
+  </header>
+
+   <!-- Page Introduction -->
+   <section class="text-center px-6 pt-16 pb-8">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4">AI Music Gallery</h2>
+    <p class="text-lg max-w-3xl mx-auto text-gray-700">A curated collection of my AI-generated tracks. Click on a cover to listen, find more <a href="https://suno.com/@chillvibescafe" class="text-red-700 hover:text-blue-600 font-medium">here</a>, or head to <a href="https://suno.com" class="text-red  -700 hover:text-blue-600 font-medium">Suno.com</a> to create your own!</p>
+  </section>
+
+  <!-- Main -->
+  <main class="flex-grow relative z-10 pt-10 pb-32">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4">
+      <div class="flex flex-col items-center">
+        <div class="relative w-full aspect-[9/16] max-h-[720px] rounded-xl overflow-hidden shadow-md cursor-pointer card" data-url="song1/Lost in the Moonlight (Remastered).mp3" onclick="playTrack(this)">
+          <img src="song1/lost in the moonight.png" alt="Lost in the Moonlight" class="w-full h-full object-cover cover">
+          <img src="play.png" alt="Play Icon" class="play-overlay absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 opacity-30 pointer-events-none hidden">
+        </div>
+        <p class="card-title text-lg font-semibold mt-2 text-center">Lost in the Moonlight</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="relative w-full aspect-[9/16] max-h-[720px] rounded-xl overflow-hidden shadow-md cursor-pointer card" data-url="song2/Case Closed, Heart Open.mp3" onclick="playTrack(this)">
+          <img src="song2/case closed, heart open.png" alt="Case Closed, Heart Open" class="w-full h-full object-cover cover">
+          <img src="play.png" alt="Play Icon" class="play-overlay absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 opacity-30 pointer-events-none hidden">
+        </div>
+        <p class="card-title text-lg font-semibold mt-2 text-center">Case Closed, Heart Open</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="relative w-full aspect-[9/16] max-h-[720px] rounded-xl overflow-hidden shadow-md cursor-pointer card" data-url="song3/Inferno Rising.mp3" onclick="playTrack(this)">
+          <img src="song3/inferno rising.jpeg" alt="Inferno Rising" class="w-full h-full object-cover cover">
+          <img src="play.png" alt="Play Icon" class="play-overlay absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 opacity-30 pointer-events-none hidden">
+        </div>
+        <p class="card-title text-lg font-semibold mt-2 text-center">Inferno Rising</p>
+      </div>
+
+      <div class="flex flex-col items-center">
+        <div class="relative w-full aspect-[9/16] max-h-[720px] rounded-xl overflow-hidden shadow-md cursor-pointer card" data-url="song4/Tomorrow's Light.mp3" onclick="playTrack(this)">
+          <img src="song4/Tomorrowslight.jpeg" alt="Tomorrow's Light" class="w-full h-full object-cover cover">
+          <img src="play.png" alt="Play Icon" class="play-overlay absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2/5 opacity-30 pointer-events-none hidden">
+        </div>
+        <p class="card-title text-lg font-semibold mt-2 text-center">Tomorrow's Light</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Audio Bar -->
+  <div id="audioBar" class="fixed bottom-0 left-0 right-0 bg-gray-800 text-white px-4 py-3 shadow-lg hidden z-50 fade-in">
+    <div class="max-w-4xl mx-auto flex flex-col items-center">
+      <p id="trackTitle" class="font-semibold mb-2"></p>
+      <audio id="audioPlayer" controls class="w-full max-w-xl"></audio>
+      <p class="text-xs text-gray-400 mt-2">&copy; 2025 ChillVibesCafe</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-white/70 backdrop-blur text-sm text-gray-600 py-6 mt-auto relative z-10">
+    <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+      <a href="https://github.com/ChillVibesCafe" target="_blank" aria-label="GitHub">
+        <img src="../github.png" alt="GitHub" class="w-6 h-6" />
+      </a>
+      <p class="text-center w-full">&copy; 2025 ChillVibesCafe. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const audioBar = document.getElementById('audioBar');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const trackTitle = document.getElementById('trackTitle');
+    let currentCard = null;
+    let isPlaying = false;
+    let currentUrl = '';
+
+    function playTrack(card) {
+      const url = card.dataset.url;
+      const title = card.nextElementSibling.textContent;
+      const overlay = card.querySelector('.play-overlay');
+
+      if (currentUrl === url) {
+        if (isPlaying) {
+          audioPlayer.pause();
+        } else {
+          audioPlayer.play();
+        }
+        return;
+      }
+
+      if (currentCard) {
+        const oldOverlay = currentCard.querySelector('.play-overlay');
+        oldOverlay.classList.remove('pulse');
+        oldOverlay.classList.add('hidden');
+      }
+
+      currentCard = card;
+      currentUrl = url;
+      overlay.classList.remove('hidden');
+
+      audioPlayer.src = url;
+      trackTitle.textContent = title;
+      audioBar.classList.remove('hidden');
+      audioPlayer.play();
+    }
+
+    audioPlayer.addEventListener('play', () => {
+      isPlaying = true;
+      if (currentCard) {
+        const overlay = currentCard.querySelector('.play-overlay');
+        overlay.classList.remove('hidden');
+        overlay.classList.add('pulse');
+      }
+    });
+
+    audioPlayer.addEventListener('pause', () => {
+      isPlaying = false;
+      if (currentCard) {
+        const overlay = currentCard.querySelector('.play-overlay');
+        overlay.classList.remove('pulse');
+        overlay.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
